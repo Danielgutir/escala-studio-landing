@@ -1,0 +1,937 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Escala Studio — Agencia E-Commerce Shopify</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --black: #0a0a0a;
+  --black2: #111111;
+  --black3: #1a1a1a;
+  --green: #b8ff57;
+  --green2: #9ee040;
+  --white: #f5f2ec;
+  --white2: #d8d4cc;
+  --gray: #555550;
+  --border: rgba(255,255,255,0.08);
+  --serif: 'Playfair Display', Georgia, serif;
+  --sans: 'DM Sans', sans-serif;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--black);
+  color: var(--white);
+  font-family: var(--sans);
+  font-weight: 300;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* NAV */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  padding: 20px 5%;
+  display: flex; align-items: center; justify-content: space-between;
+  background: rgba(10,10,10,0.85);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+}
+.nav-logo {
+  font-family: var(--serif);
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--white);
+  letter-spacing: -0.02em;
+}
+.nav-logo span { color: var(--green); }
+.nav-links { display: flex; gap: 32px; list-style: none; }
+.nav-links a { color: var(--white2); font-size: 13px; text-decoration: none; letter-spacing: 0.05em; text-transform: uppercase; transition: color .2s; }
+.nav-links a:hover { color: var(--green); }
+.nav-cta {
+  background: var(--green);
+  color: var(--black);
+  padding: 10px 24px;
+  font-family: var(--sans);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  border: none; cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+}
+.nav-cta:hover { background: var(--green2); }
+
+/* TICKER */
+.ticker {
+  background: var(--green);
+  color: var(--black);
+  padding: 10px 0;
+  overflow: hidden;
+  white-space: nowrap;
+  margin-top: 65px;
+}
+.ticker-inner {
+  display: inline-block;
+  animation: ticker 28s linear infinite;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+@keyframes ticker {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* HERO */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: 80px 5% 60px;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -200px; right: -200px;
+  width: 700px; height: 700px;
+  background: radial-gradient(circle, rgba(184,255,87,0.06) 0%, transparent 70%);
+  pointer-events: none;
+}
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+.hero-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--green);
+  font-weight: 500;
+  margin-bottom: 24px;
+}
+.hero-eyebrow::before {
+  content: '';
+  display: block;
+  width: 24px; height: 1px;
+  background: var(--green);
+}
+.hero h1 {
+  font-family: var(--serif);
+  font-size: clamp(42px, 5vw, 68px);
+  font-weight: 900;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  margin-bottom: 24px;
+  color: var(--white);
+}
+.hero h1 em {
+  font-style: italic;
+  color: var(--green);
+}
+.hero-sub {
+  font-size: 16px;
+  color: var(--white2);
+  line-height: 1.7;
+  margin-bottom: 40px;
+  max-width: 480px;
+  font-weight: 300;
+}
+.hero-btns { display: flex; gap: 14px; flex-wrap: wrap; }
+.btn-primary {
+  background: var(--green);
+  color: var(--black);
+  padding: 16px 32px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  border: none; cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  transition: background .2s, transform .15s;
+}
+.btn-primary:hover { background: var(--green2); transform: translateY(-1px); }
+.btn-ghost {
+  border: 1px solid rgba(255,255,255,0.2);
+  color: var(--white);
+  padding: 16px 32px;
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  transition: border-color .2s, color .2s;
+}
+.btn-ghost:hover { border-color: var(--green); color: var(--green); }
+
+.hero-right {
+  position: relative;
+}
+.hero-stat-card {
+  background: var(--black3);
+  border: 1px solid var(--border);
+  padding: 28px 32px;
+  margin-bottom: 16px;
+  position: relative;
+  overflow: hidden;
+  opacity: 0;
+  animation: fadeUp .6s forwards;
+}
+.hero-stat-card:nth-child(1) { animation-delay: .2s; }
+.hero-stat-card:nth-child(2) { animation-delay: .35s; }
+.hero-stat-card:nth-child(3) { animation-delay: .5s; }
+.hero-stat-card::before {
+  content: '';
+  position: absolute; top: 0; left: 0;
+  width: 3px; height: 100%;
+  background: var(--green);
+}
+.stat-num {
+  font-family: var(--serif);
+  font-size: 48px;
+  font-weight: 900;
+  line-height: 1;
+  color: var(--white);
+  margin-bottom: 4px;
+}
+.stat-num span { color: var(--green); }
+.stat-label { font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--white2); }
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* LOGOS */
+.logos-section {
+  padding: 50px 5%;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+.logos-label {
+  text-align: center;
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--gray);
+  margin-bottom: 28px;
+}
+.logos-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 48px;
+  flex-wrap: wrap;
+}
+.logo-badge {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--white2);
+  padding: 8px 18px;
+  border: 1px solid var(--border);
+  display: flex; align-items: center; gap: 8px;
+}
+.logo-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--green); }
+
+/* PARA QUIÉN */
+.section {
+  padding: 100px 5%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.section-full {
+  padding: 100px 5%;
+}
+.section-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--green);
+  font-weight: 500;
+  margin-bottom: 16px;
+}
+.section-title {
+  font-family: var(--serif);
+  font-size: clamp(32px, 4vw, 52px);
+  font-weight: 900;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--white);
+  margin-bottom: 16px;
+}
+.section-title em { font-style: italic; color: var(--green); }
+
+.check-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  margin-top: 48px;
+  border: 1px solid var(--border);
+}
+.check-item {
+  padding: 32px;
+  border-right: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  display: flex; gap: 16px; align-items: flex-start;
+  transition: background .2s;
+}
+.check-item:hover { background: var(--black3); }
+.check-item:nth-child(even) { border-right: none; }
+.check-icon {
+  width: 32px; height: 32px;
+  background: rgba(184,255,87,0.12);
+  border: 1px solid rgba(184,255,87,0.3);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  font-size: 14px;
+  color: var(--green);
+  font-weight: 500;
+}
+.check-text { font-size: 14px; color: var(--white2); line-height: 1.6; }
+.check-text strong { color: var(--white); font-weight: 500; display: block; margin-bottom: 4px; font-size: 15px; }
+
+/* NO ES PARA TI */
+.nope-section {
+  background: var(--black2);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 60px 5%;
+}
+.nope-inner { max-width: 800px; margin: 0 auto; }
+.nope-title {
+  font-family: var(--serif);
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--white2);
+  margin-bottom: 24px;
+}
+.nope-list { display: flex; flex-direction: column; gap: 12px; }
+.nope-item {
+  display: flex; gap: 12px; align-items: flex-start;
+  font-size: 14px; color: var(--gray);
+}
+.nope-x { color: #ff4444; font-weight: 500; flex-shrink: 0; }
+
+/* SERVICIOS */
+.services-section {
+  padding: 100px 5%;
+  background: var(--black);
+}
+.services-inner { max-width: 1200px; margin: 0 auto; }
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+  margin-top: 60px;
+}
+.service-card {
+  background: var(--black);
+  padding: 40px 32px;
+  position: relative;
+  overflow: hidden;
+  transition: background .25s;
+}
+.service-card:hover { background: var(--black3); }
+.service-card.featured {
+  background: var(--green);
+  grid-column: span 1;
+}
+.service-card.featured:hover { background: var(--green2); }
+.service-num {
+  font-family: var(--serif);
+  font-size: 72px;
+  font-weight: 900;
+  line-height: 1;
+  color: rgba(255,255,255,0.05);
+  position: absolute;
+  top: 16px; right: 20px;
+  letter-spacing: -0.04em;
+}
+.service-card.featured .service-num { color: rgba(0,0,0,0.08); }
+.service-icon {
+  width: 44px; height: 44px;
+  border: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 20px;
+  font-size: 18px;
+}
+.service-card.featured .service-icon { border-color: rgba(0,0,0,0.15); }
+.service-name {
+  font-family: var(--serif);
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 8px;
+  line-height: 1.2;
+}
+.service-card.featured .service-name { color: var(--black); }
+.service-desc {
+  font-size: 13px;
+  color: var(--white2);
+  line-height: 1.7;
+  margin-bottom: 20px;
+}
+.service-card.featured .service-desc { color: rgba(0,0,0,0.65); }
+.service-includes {
+  list-style: none;
+  display: flex; flex-direction: column; gap: 7px;
+  margin-bottom: 24px;
+}
+.service-includes li {
+  font-size: 12px;
+  color: var(--white2);
+  display: flex; gap: 8px; align-items: flex-start;
+  line-height: 1.5;
+}
+.service-card.featured .service-includes li { color: rgba(0,0,0,0.7); }
+.service-includes li::before {
+  content: '→';
+  color: var(--green);
+  flex-shrink: 0;
+  font-size: 11px;
+  margin-top: 1px;
+}
+.service-card.featured .service-includes li::before { color: rgba(0,0,0,0.4); }
+.service-price {
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--green);
+  font-weight: 500;
+  border-top: 1px solid var(--border);
+  padding-top: 16px;
+}
+.service-card.featured .service-price { color: rgba(0,0,0,0.5); border-color: rgba(0,0,0,0.1); }
+
+/* PROCESO */
+.proceso-section {
+  padding: 100px 5%;
+  background: var(--black2);
+  border-top: 1px solid var(--border);
+}
+.proceso-inner { max-width: 1000px; margin: 0 auto; }
+.proceso-steps { margin-top: 60px; }
+.proceso-step {
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  gap: 32px;
+  padding: 40px 0;
+  border-bottom: 1px solid var(--border);
+  align-items: start;
+}
+.proceso-step:last-child { border-bottom: none; }
+.paso-num {
+  font-family: var(--serif);
+  font-size: 52px;
+  font-weight: 900;
+  line-height: 1;
+  color: rgba(255,255,255,0.08);
+}
+.paso-content { padding-top: 4px; }
+.paso-tag {
+  display: inline-block;
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--green);
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+.paso-title {
+  font-family: var(--serif);
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 12px;
+}
+.paso-desc {
+  font-size: 14px;
+  color: var(--white2);
+  line-height: 1.7;
+  max-width: 600px;
+}
+
+/* DIFERENCIAL */
+.dif-section {
+  padding: 100px 5%;
+  background: var(--black);
+}
+.dif-inner { max-width: 1200px; margin: 0 auto; }
+.dif-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+  margin-top: 60px;
+}
+.dif-item {
+  background: var(--black);
+  padding: 40px;
+  transition: background .2s;
+}
+.dif-item:hover { background: var(--black3); }
+.dif-label {
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--gray);
+  margin-bottom: 16px;
+}
+.dif-title {
+  font-family: var(--serif);
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 10px;
+  line-height: 1.2;
+}
+.dif-desc {
+  font-size: 13px;
+  color: var(--white2);
+  line-height: 1.7;
+}
+
+/* CTA FINAL */
+.cta-section {
+  padding: 120px 5%;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.cta-section::before {
+  content: '';
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 800px; height: 400px;
+  background: radial-gradient(ellipse, rgba(184,255,87,0.07) 0%, transparent 70%);
+  pointer-events: none;
+}
+.cta-inner { max-width: 800px; margin: 0 auto; position: relative; }
+.cta-pretitle {
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--green);
+  font-weight: 500;
+  margin-bottom: 20px;
+}
+.cta-title {
+  font-family: var(--serif);
+  font-size: clamp(36px, 5vw, 60px);
+  font-weight: 900;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  color: var(--white);
+  margin-bottom: 20px;
+}
+.cta-title em { font-style: italic; color: var(--green); }
+.cta-sub {
+  font-size: 16px;
+  color: var(--white2);
+  line-height: 1.7;
+  margin-bottom: 40px;
+}
+.cta-btn {
+  background: var(--green);
+  color: var(--black);
+  padding: 18px 48px;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  border: none; cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  transition: background .2s, transform .15s;
+}
+.cta-btn:hover { background: var(--green2); transform: translateY(-2px); }
+.cta-note {
+  font-size: 12px;
+  color: var(--gray);
+  margin-top: 16px;
+  letter-spacing: 0.05em;
+}
+
+/* FOOTER */
+footer {
+  padding: 40px 5%;
+  border-top: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.footer-logo {
+  font-family: var(--serif);
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--white);
+}
+.footer-logo span { color: var(--green); }
+.footer-note { font-size: 12px; color: var(--gray); }
+
+@media (max-width: 768px) {
+  .hero-grid, .check-grid, .services-grid, .dif-grid { grid-template-columns: 1fr; }
+  .services-grid { background: none; border: none; gap: 16px; }
+  .service-card { border: 1px solid var(--border); }
+  .nav-links { display: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Escala<span>.</span>Studio</div>
+  <ul class="nav-links">
+    <li><a href="#servicios">Servicios</a></li>
+    <li><a href="#proceso">Proceso</a></li>
+    <li><a href="#diferencial">Por qué nosotros</a></li>
+  </ul>
+  <a href="#cta" class="nav-cta">Agendar llamada</a>
+</nav>
+
+<!-- TICKER -->
+<div class="ticker">
+  <span class="ticker-inner">
+    &nbsp;&nbsp;Shopify Partner &nbsp;·&nbsp; Meta Ads Partner &nbsp;·&nbsp; Google Ads Partner &nbsp;·&nbsp; Klaviyo Partner &nbsp;·&nbsp; Omnisend Partner &nbsp;·&nbsp; E-Commerce Especializado &nbsp;·&nbsp; Revenue-First &nbsp;·&nbsp; LATAM &nbsp;·&nbsp; Sistemas que Escalan &nbsp;·&nbsp;
+    Shopify Partner &nbsp;·&nbsp; Meta Ads Partner &nbsp;·&nbsp; Google Ads Partner &nbsp;·&nbsp; Klaviyo Partner &nbsp;·&nbsp; Omnisend Partner &nbsp;·&nbsp; E-Commerce Especializado &nbsp;·&nbsp; Revenue-First &nbsp;·&nbsp; LATAM &nbsp;·&nbsp; Sistemas que Escalan &nbsp;·&nbsp;
+  </span>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-grid">
+    <div class="hero-left">
+      <div class="hero-eyebrow">Agencia E-Commerce · Shopify</div>
+      <h1>Tu tienda Shopify.<br>Un sistema que <em>genera revenue.</em></h1>
+      <p class="hero-sub">Construimos el sistema completo de crecimiento para tu e-commerce: plataforma, pauta paga y email marketing — ejecutado como un solo equipo, medido en resultados reales.</p>
+      <div class="hero-btns">
+        <a href="#cta" class="btn-primary">Quiero escalar mi tienda</a>
+        <a href="#proceso" class="btn-ghost">Ver cómo trabajamos</a>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="hero-stat-card">
+        <div class="stat-num"><span>$</span>0 <span style="font-size:28px;vertical-align:middle">→ E-Commerce</span></div>
+        <div class="stat-label">Para marcas que arrancan desde cero</div>
+      </div>
+      <div class="hero-stat-card">
+        <div class="stat-num"><span>3×</span></div>
+        <div class="stat-label">Promedio de crecimiento en revenue en 90 días</div>
+      </div>
+      <div class="hero-stat-card">
+        <div class="stat-num">1 <span style="font-size:22px;vertical-align:middle">Equipo</span></div>
+        <div class="stat-label">Estrategia · Ads · Email · Shopify — sin coordinarte</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PARTNERS -->
+<div class="logos-section">
+  <div class="logos-label">Partners certificados</div>
+  <div class="logos-row">
+    <div class="logo-badge"><div class="logo-dot"></div>Shopify Partner</div>
+    <div class="logo-badge"><div class="logo-dot"></div>Meta Partner</div>
+    <div class="logo-badge"><div class="logo-dot"></div>Google Ads Partner</div>
+    <div class="logo-badge"><div class="logo-dot"></div>Klaviyo Partner</div>
+    <div class="logo-badge"><div class="logo-dot"></div>Omnisend Partner</div>
+  </div>
+</div>
+
+<!-- PARA QUIÉN -->
+<div style="background: var(--black);">
+<div class="section">
+  <div class="section-eyebrow">¿Esto es para ti?</div>
+  <h2 class="section-title">Trabajamos con marcas que<br>quieren <em>resultados reales.</em></h2>
+  <p style="font-size:15px; color:var(--white2); max-width:580px; line-height:1.7;">Sin importar si estás arrancando desde cero o llevas años vendiendo — si tu e-commerce necesita un sistema, aquí es.</p>
+
+  <div class="check-grid">
+    <div class="check-item">
+      <div class="check-icon">✓</div>
+      <div class="check-text">
+        <strong>Arrancas desde cero y quieres hacerlo bien</strong>
+        Quieres montar tu tienda Shopify con base sólida — sin improvisar, con estrategia desde el día 1 y una plataforma que esté lista para vender.
+      </div>
+    </div>
+    <div class="check-item">
+      <div class="check-icon">✓</div>
+      <div class="check-text">
+        <strong>Tienes tienda activa pero el crecimiento se estancó</strong>
+        Llevas meses con los mismos números. Sientes que deberías vender más pero no sabes exactamente qué está fallando.
+      </div>
+    </div>
+    <div class="check-item">
+      <div class="check-icon">✓</div>
+      <div class="check-text">
+        <strong>Tu equipo ejecuta pero nadie tiene visión estratégica</strong>
+        Tienes personas trabajando, pero nadie coordina ads, email y plataforma como un sistema integrado que empuje al mismo tiempo.
+      </div>
+    </div>
+    <div class="check-item">
+      <div class="check-icon">✓</div>
+      <div class="check-text">
+        <strong>Estás cansado de coordinar múltiples proveedores</strong>
+        Una agencia de ads, un freelancer de email, otro de diseño — y ninguno habla con el otro. Los resultados son inconsistentes y la responsabilidad no tiene dueño.
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- NO ES PARA TI -->
+<div class="nope-section">
+  <div class="nope-inner">
+    <p class="nope-title">Esto <em>no</em> es para ti si...</p>
+    <div class="nope-list">
+      <div class="nope-item"><span class="nope-x">✕</span> Buscas la opción más barata del mercado sin importar resultados</div>
+      <div class="nope-item"><span class="nope-x">✕</span> Esperas resultados mágicos en 2 semanas sin presupuesto de pauta</div>
+      <div class="nope-item"><span class="nope-x">✕</span> No tienes disposición para compartir datos reales del negocio</div>
+      <div class="nope-item"><span class="nope-x">✕</span> Quieres que ejecutemos sin tener acceso a tomar decisiones estratégicas</div>
+    </div>
+  </div>
+</div>
+
+<!-- SERVICIOS -->
+<section class="services-section" id="servicios">
+  <div class="services-inner">
+    <div class="section-eyebrow">Lo que hacemos</div>
+    <h2 class="section-title">Servicios diseñados para<br><em>escalar tu revenue.</em></h2>
+    <p style="font-size:15px; color:var(--white2); max-width:560px; line-height:1.7; margin-top:12px;">No vendemos piezas sueltas. Cada servicio es parte de un sistema — y cuando los conectas todos, el resultado es exponencial.</p>
+
+    <div class="services-grid">
+      <!-- Pauta Paga -->
+      <div class="service-card">
+        <div class="service-num">01</div>
+        <div class="service-icon">◈</div>
+        <div class="service-name">Pauta Paga</div>
+        <div class="service-desc">Gestionamos tu inversión en Meta Ads con estrategia real. Cada campaña tiene un objetivo, un KPI y una lógica de escala.</div>
+        <ul class="service-includes">
+          <li>Setup completo de cuenta publicitaria y Business Manager</li>
+          <li>Estructura de campañas por etapa del funnel (frío, tibio, caliente)</li>
+          <li>Investigación de audiencias y configuración de píxel</li>
+          <li>Brief creativo para piezas orientadas a conversión</li>
+          <li>Testing estructurado de creativos y mensajes</li>
+          <li>Cálculo de break-even ROAS y ROAS objetivo</li>
+          <li>Optimización semanal y reporte quincenal de revenue atribuido</li>
+        </ul>
+        <div class="service-price">Setup + Gestión mensual</div>
+      </div>
+
+      <!-- Shopify -->
+      <div class="service-card">
+        <div class="service-num">02</div>
+        <div class="service-icon">▣</div>
+        <div class="service-name">Plataforma Shopify</div>
+        <div class="service-desc">Tu tienda es tu vendedor 24/7. La construimos desde cero con arquitectura de conversión — o la optimizamos si ya existe.</div>
+        <ul class="service-includes">
+          <li>Creación completa de tienda Shopify desde cero</li>
+          <li>Selección e implementación de tema optimizado para conversión</li>
+          <li>Catálogo de productos, colecciones y fichas de producto con copy</li>
+          <li>Configuración de pasarelas de pago, envíos y dominio</li>
+          <li>Integración de GA4, GTM, Meta Pixel con eventos de conversión</li>
+          <li>Apps estratégicas: upsell, reseñas, carrito, recuperación</li>
+          <li>CRO: páginas de producto, checkout y landing pages de campaña</li>
+        </ul>
+        <div class="service-price">Setup · Proyecto único o mensual</div>
+      </div>
+
+      <!-- Email Marketing -->
+      <div class="service-card">
+        <div class="service-num">03</div>
+        <div class="service-icon">◎</div>
+        <div class="service-name">Email Marketing</div>
+        <div class="service-desc">El canal de mayor ROI en e-commerce cuando está bien ejecutado. Instalamos el sistema que vende mientras tu cliente duerme.</div>
+        <ul class="service-includes">
+          <li>Setup de plataforma (Klaviyo u Omnisend según modelo)</li>
+          <li>Flows esenciales: bienvenida, carrito, post-compra, win-back</li>
+          <li>Segmentación por comportamiento y etapa del ciclo de vida</li>
+          <li>Calendario de campañas mensual alineado a calendario comercial</li>
+          <li>Diseño de plantillas on-brand y copy orientado a conversión</li>
+          <li>Optimización continua: asunto, horario, segmento y contenido</li>
+          <li>Reporte mensual con revenue atribuido directo</li>
+        </ul>
+        <div class="service-price">Setup + Gestión mensual</div>
+      </div>
+
+      <!-- Estrategia -->
+      <div class="service-card">
+        <div class="service-num">04</div>
+        <div class="service-icon">◇</div>
+        <div class="service-name">Estrategia & Consultoría</div>
+        <div class="service-desc">Antes de ejecutar, hay que saber exactamente qué construir. Definimos el mapa completo de tu negocio digital.</div>
+        <ul class="service-includes">
+          <li>Business plan e-commerce: buyer persona, márgenes, break-even ROAS</li>
+          <li>Auditoría gratuita de plataforma, pauta activa y email</li>
+          <li>Definición de KPIs y dashboard de seguimiento semanal</li>
+          <li>Calendario comercial semestral con activaciones clave</li>
+          <li>Ángulos de comunicación y mensajes por segmento</li>
+          <li>Sesiones estratégicas quincenales + reporte semanal</li>
+        </ul>
+        <div class="service-price">Proyecto · Retainer estratégico</div>
+      </div>
+
+      <!-- FEATURED: Paquete Completo -->
+      <div class="service-card featured" style="grid-column: span 2;">
+        <div class="service-num">05</div>
+        <div class="service-icon" style="border-color:rgba(0,0,0,0.15);">★</div>
+        <div class="service-name" style="font-size:28px;">Sistema Completo 360°</div>
+        <div class="service-desc">Para marcas que quieren delegar su operación digital completa. Un equipo que piensa, ejecuta y optimiza — como si fuera tuyo.</div>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:0 32px;">
+          <ul class="service-includes">
+            <li>Todo lo de Pauta Paga (Meta Ads completo)</li>
+            <li>Todo lo de Email Marketing (flows + campañas)</li>
+            <li>Plataforma Shopify activa y optimizada</li>
+            <li>Dirección estratégica mensual</li>
+          </ul>
+          <ul class="service-includes">
+            <li>Calendario comercial semestral activo</li>
+            <li>Parrilla de contenidos semanal (brief ads + orgánico)</li>
+            <li>Dashboard de KPIs: revenue, ROAS, CVR, profit</li>
+            <li>Reunión estratégica quincenal (sábados) + reporte semanal</li>
+          </ul>
+        </div>
+        <div class="service-price" style="font-size:13px;">Setup único + Retainer mensual — No vendemos horas. Vendemos el sistema.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESO -->
+<section class="proceso-section" id="proceso">
+  <div class="proceso-inner">
+    <div class="section-eyebrow">Cómo trabajamos</div>
+    <h2 class="section-title">5 pasos para instalar<br>el sistema en tu <em>negocio.</em></h2>
+
+    <div class="proceso-steps">
+      <div class="proceso-step">
+        <div class="paso-num">01</div>
+        <div class="paso-content">
+          <div class="paso-tag">Llamada de diagnóstico</div>
+          <div class="paso-title">Entendemos dónde estás y qué necesitas para crecer</div>
+          <div class="paso-desc">30 minutos donde escuchamos tu negocio, tus números reales y dónde está el cuello de botella. No es una llamada de ventas — es una sesión de claridad para confirmar que podemos generar impacto en tu caso específico.</div>
+        </div>
+      </div>
+      <div class="proceso-step">
+        <div class="paso-num">02</div>
+        <div class="paso-content">
+          <div class="paso-tag">Auditoría 100% gratuita</div>
+          <div class="paso-title">Te entregamos el diagnóstico antes de hablar de precios</div>
+          <div class="paso-desc">Revisamos tu tienda Shopify, estructura de pauta activa y estrategia de email. Te entregamos un documento con los puntos críticos que están frenando tu crecimiento — sin costo, sin compromiso, con data real.</div>
+        </div>
+      </div>
+      <div class="proceso-step">
+        <div class="paso-num">03</div>
+        <div class="paso-content">
+          <div class="paso-tag">Propuesta basada en data</div>
+          <div class="paso-title">Un plan construido para tu modelo de negocio, no una plantilla genérica</div>
+          <div class="paso-desc">Con base en la auditoría te mostramos exactamente qué sistema instalaremos, qué resultados esperamos y en qué plazos. Cada propuesta incluye proyección de revenue, KPIs objetivo y estructura de inversión.</div>
+        </div>
+      </div>
+      <div class="proceso-step">
+        <div class="paso-num">04</div>
+        <div class="paso-content">
+          <div class="paso-tag">Setup · Lanzamos el sistema</div>
+          <div class="paso-title">Instalamos la infraestructura, activamos y medimos desde el día 1</div>
+          <div class="paso-desc">Plataforma lista, campañas activas, flows funcionando, dashboards configurados. Cada acción tiene un KPI asociado. La ejecución arranca con datos, no con suposiciones.</div>
+        </div>
+      </div>
+      <div class="proceso-step">
+        <div class="paso-num">05</div>
+        <div class="paso-content">
+          <div class="paso-tag">Escalamos juntos</div>
+          <div class="paso-title">Reunión estratégica quincenal · Reporte semanal · Ajustes continuos</div>
+          <div class="paso-desc">Nos reunimos cada 15 días (sábados) para revisar números, ajustar estrategia y definir próximos pasos. Recibes un reporte semanal con revenue atribuido. No vendemos horas — vendemos resultados.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DIFERENCIAL -->
+<section class="dif-section" id="diferencial">
+  <div class="dif-inner">
+    <div class="section-eyebrow">Por qué nosotros</div>
+    <h2 class="section-title">Lo que nos separa<br>de cualquier <em>agencia genérica.</em></h2>
+
+    <div class="dif-grid">
+      <div class="dif-item">
+        <div class="dif-label">Diferencial 01</div>
+        <div class="dif-title">Un equipo, un sistema, un punto de contacto</div>
+        <div class="dif-desc">Tú hablas con nosotros. Nosotros coordinamos el equipo. No tienes que gestionar tres proveedores ni explicar cinco veces qué quieres. El resultado llega integrado, no en piezas sueltas.</div>
+      </div>
+      <div class="dif-item">
+        <div class="dif-label">Diferencial 02</div>
+        <div class="dif-title">Partners certificados en todo el stack que importa</div>
+        <div class="dif-desc">Shopify, Meta, Google Ads, Klaviyo, Omnisend. No subcontratamos sin criterio — cada herramienta del ecosistema tiene a alguien certificado tomando las decisiones.</div>
+      </div>
+      <div class="dif-item">
+        <div class="dif-label">Diferencial 03</div>
+        <div class="dif-title">Venimos de operar e-commerces reales, no de vender servicios</div>
+        <div class="dif-desc">Gestionamos tiendas con inventario real, márgenes reales y presión comercial real. Eso cambia cómo tomamos decisiones — porque sabemos lo que significa que un número esté mal.</div>
+      </div>
+      <div class="dif-item">
+        <div class="dif-label">Diferencial 04</div>
+        <div class="dif-title">Revenue atribuido, no métricas de vanidad</div>
+        <div class="dif-desc">Cada reporte responde una sola pregunta: ¿cuánto generó nuestra estrategia? Nunca impresiones ni alcance como resultado principal. Si no lo podemos medir en revenue, lo ajustamos.</div>
+      </div>
+      <div class="dif-item">
+        <div class="dif-label">Diferencial 05</div>
+        <div class="dif-title">Sistemas replicables sobre ejecución aislada</div>
+        <div class="dif-desc">No ejecutamos tareas. Instalamos sistemas. La diferencia es que un sistema trabaja cuando no estamos mirando — y escala sin que la calidad del resultado dependa de cuántas horas le dedicamos.</div>
+      </div>
+      <div class="dif-item" style="background: rgba(184,255,87,0.04); border: 1px solid rgba(184,255,87,0.15);">
+        <div class="dif-label" style="color: var(--green);">El modelo</div>
+        <div class="dif-title" style="color: var(--green);">No vendemos horas.<br>Vendemos resultados.</div>
+        <div class="dif-desc">Nuestro modelo de trabajo — setup + retainer mensual — alinea nuestro éxito con el tuyo. Si tu tienda crece, la relación crece. Así de simple.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<section class="cta-section" id="cta">
+  <div class="cta-inner">
+    <div class="cta-pretitle">El siguiente paso</div>
+    <h2 class="cta-title">¿Listo para instalar el sistema que<br>hace crecer tu <em>tienda?</em></h2>
+    <p class="cta-sub">Empieza con una llamada de 30 minutos. Sin costo, sin compromiso.<br>Solo claridad sobre si podemos ayudarte — y cómo.</p>
+    <a href="#" class="cta-btn">Agendar mi llamada de diagnóstico</a>
+    <div class="cta-note">Cupos limitados por mes · Auditoría gratuita incluida</div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Escala<span>.</span>Studio</div>
+  <div class="footer-note">E-Commerce · Shopify · Paid Media · Email Marketing · LATAM 2026</div>
+</footer>
+
+</body>
+</html>
